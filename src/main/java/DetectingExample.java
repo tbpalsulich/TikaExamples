@@ -1,16 +1,3 @@
-import org.apache.tika.exception.TikaException;
-import org.apache.tika.language.LanguageIdentifier;
-import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.AutoDetectParser;
-import org.apache.tika.parser.ParseContext;
-import org.apache.tika.sax.BodyContentHandler;
-import org.xml.sax.SAXException;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-
 /**
  * Licensed to the Apache Software Foundation (ASF) under one or more
  * contributor license agreements.  See the NOTICE file distributed with
@@ -27,6 +14,19 @@ import java.io.InputStream;
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+import org.apache.tika.exception.TikaException;
+import org.apache.tika.language.LanguageIdentifier;
+import org.apache.tika.metadata.Metadata;
+import org.apache.tika.parser.AutoDetectParser;
+import org.apache.tika.parser.ParseContext;
+import org.apache.tika.sax.BodyContentHandler;
+import org.xml.sax.SAXException;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class DetectingExample {
     public static void main(String[] args) {
