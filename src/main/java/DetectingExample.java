@@ -15,44 +15,15 @@
  * limitations under the License.
  */
 
-import org.apache.tika.exception.TikaException;
 import org.apache.tika.language.LanguageIdentifier;
-import org.apache.tika.metadata.Metadata;
-import org.apache.tika.parser.AutoDetectParser;
-import org.apache.tika.parser.ParseContext;
-import org.apache.tika.sax.BodyContentHandler;
-import org.xml.sax.SAXException;
-
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 
 public class DetectingExample {
     public static void main(String[] args) {
-        try {
-            File file = new File("LICENSE");
+        String content = "This is an example string of text that will be detected as English.";
 
-            AutoDetectParser parser = new AutoDetectParser();
-            InputStream stream = new FileInputStream(file);
-            BodyContentHandler handler = new BodyContentHandler();
-            Metadata metadata = new Metadata();
-            ParseContext parseContext = new ParseContext();
+        LanguageIdentifier identifier = new LanguageIdentifier(content);
+        String language = identifier.getLanguage();
 
-            parser.parse(stream, handler, metadata, parseContext);
-
-            String content = handler.toString();
-
-            LanguageIdentifier identifier = new LanguageIdentifier(content);
-            String language = identifier.getLanguage();
-
-            System.out.println("The LICENSE is in " + language + ".");
-        } catch (IOException e) {
-            System.err.println("IO Error while parsing.");
-        } catch (TikaException e) {
-            System.err.println("Tika error while parsing.");
-        } catch (SAXException e) {
-            System.err.println("SAX error while parsing.");
-        }
+        System.out.println("The String is in " + language + ".");
     }
 }
