@@ -16,16 +16,16 @@
 				var form = $('#myform');
 				form.submit(function (ev) {
 					$.ajax({
-						type: "POST",
-						url: "http://162.242.228.174:9998/tika/form",
-						contentType: "multipart/form-data",
+						type: form.attr("method"),
+						url: form.attr("action"),
+						contentType: form.attr("enctype"),
 						data: form.serialize(),
 						success: function (data) {
 							console.log(data);
 						}
 					});
 
-					ev.preventDefault();
+					// ev.preventDefault();
 				});
 			})
 		</script>
@@ -33,7 +33,7 @@
 	<body>
 		<div class="container">
 			<div class="col-sx-4">
-				<form id="myform">
+				<form id="myform" method="POST" enctype="multipart/form-data" action="http://162.242.228.174:9998/tika/form">
 					File: <input type="file" name="file">
 					<br/>
 					<input type="submit" value="Get Content">
