@@ -20,6 +20,10 @@
 						},
 						beforeSerialize: function($form, options) {
 							$("#result").html("<span class=\"glyphicon glyphicon-refresh spinning\"></span> Loading...");
+							$("#result").show();
+						},
+						error: function() {
+							$("#result").html('<div class="alert alert-danger" role="alert"><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span> Error</div>')
 						}
 					}); 
 				});
@@ -28,13 +32,11 @@
 	</head>
 	<body>
 		<div class="container">
-			<div class="col-sx-4">
-				<form id="myform" method="POST" enctype="multipart/form-data" action="http://162.242.228.174:9997/tika/form">
-					File: <input type="file" name="file">
-					<br/>
-					<input type="submit" value="Get Content">
-				</form>
-			</div>
+			<form id="myform" method="POST" enctype="multipart/form-data" action="http://162.242.228.174:9997/tika/form">
+				File: <input type="file" name="file">
+				<br/>
+				<input type="submit" value="Get Content">
+			</form>
 			<div id="result" class="highlight" style="display:none;">
 			</div>
 		</div>
